@@ -34,6 +34,20 @@ const getProductForCategory = async (req,res)=>{
   }
 }
 
+const getProduct = async(req,res)=>{
+  try{
+    const id=parseInt(req.params.id)
+    console.log(id)
+    const response= await api.get(`products/${id}`);
+    console.log(response.data)
+    res.status(200).json(response.data)
+  }
+  catch(error){
+    console.log("eror")
+    console.log(error)
+  }
+}
+
 const obtenerClientes= async (req,res)=>{
     try{
         api.get("customers")
@@ -73,5 +87,5 @@ const login= async (req, res) => {
   }
 };
 module.exports = {
-    getProductos,obtenerClientes,getProductForCategory
+    getProductos,obtenerClientes,getProductForCategory,getProduct
 };
